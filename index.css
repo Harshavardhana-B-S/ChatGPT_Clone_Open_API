@@ -1,0 +1,109 @@
+*{
+    font-family: sans-serif;
+    color: #fff;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color:  #343541;
+    display: flex;
+}
+
+.sideBar{
+    background-color: #282424;
+    width: 300px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.mainContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+    height: 100vh;
+    width: 100%;
+}
+
+.mainContainer h1{
+    font-size: 33px;
+    font-weight: 600;
+    padding: 200px 0;
+}
+
+
+.bottomSection{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;  
+}
+
+.infoFooter{
+    color:rgba(225,225,225,0.5);
+    font-size: 15px;
+    padding: 10px;
+}
+
+.inputContainer input{
+    border:none;
+    background-color: #48444c;
+    color: #8e8ea0;;
+    width: 100%; 
+    font-size: 20px;
+    padding: 12px 15px;
+    border-radius: 5px;
+}
+
+.inputContainer input:focus{
+    outline:none;
+}
+
+.inputContainer{
+    position: relative;
+    width: 100%;
+    max-width: 650px;
+}
+
+#submit{
+    margin-right: 25px;
+}
+
+.inputContainer #submit{
+    position: absolute;
+    right: 0;
+    bottom: 15px;
+    cursor: pointer;
+}
+
+.addChat{
+    border: 0.5px solid rgba(225,225,225,0.5);
+    background-color: transparent;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px;
+}
+
+.sideFooter{
+    border-top: 0.5px solid rgba(255,255,255,0.5);
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+}
+
+.historyConatiner{
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.historyConatiner p{
+    cursor: pointer;
+}
