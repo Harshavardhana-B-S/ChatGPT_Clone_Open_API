@@ -1,3 +1,5 @@
+
+
 const submitBtn=document.getElementById("submit");
 const displayText=document.querySelector(".outputBox")
 const input=document.getElementById("inputTag");
@@ -28,8 +30,31 @@ async function displayMessage(){
         const data = await response.json();
         displayText.textContent= data.choices[0].message.content;
         if(data.choices[0].message.content){
+
+             // Get existing data from local storage
+             const savedData = JSON.parse(localStorage.getItem('savedData')) || [];
+
+             // Add new data to array
+             savedData.push({
+                 input: input.value,
+                 output: data.choices[0].message.content,
+                 paraText: input.value // Add para text to saved data
+             });
+ 
+             // Save updated array to local storage
+             localStorage.setItem('savedData', JSON.stringify(savedData));
+
+           
             const para=document.createElement('p');
             para.textContent=input.value;
+            para.addEventListener("click",(event)=>{
+                const savedData = JSON.parse(localStorage.getItem('savedData'));
+                const input = event.target.textContent;
+                const output = savedData.find(data => data.input === input)?.output;
+                if (output) {
+                    displayText.textContent = output;
+                  }
+            })
             historyConatiner.append(para);
 
         }
@@ -40,6 +65,24 @@ async function displayMessage(){
 
     }
 }
+
+// Load saved data on page load
+window.addEventListener('load', () => {
+    const savedData = JSON.parse(localStorage.getItem('savedData')) || [];
+    savedData.forEach(data => {
+      const para = document.createElement('p');
+      para.textContent = data.paraText;
+      para.addEventListener("click",(event)=>{
+        const input = event.target.textContent;
+        const output = savedData.find(data => data.input === input)?.output;
+        if (output) {
+          displayText.textContent = output;
+        }
+      });
+      historyConatiner.append(para);
+    });
+  });
+
 
 addChat.addEventListener("click",()=>{
     input.value="";

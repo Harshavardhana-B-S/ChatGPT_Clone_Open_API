@@ -107,3 +107,25 @@ body{
 .historyConatiner p{
     cursor: pointer;
 }
+
+/* .outputBox{
+    text-align: center;
+} */
+
+.DisplayBox{
+    width: 1000px;
+}
+
+.clearHistory{
+    margin: 0 auto;
+}
+
+.clearHistory button{
+    border:none;
+    background-color: #282424;
+    color: #8e8ea0;;
+    width: 100%; 
+    font-size: 15px;
+    padding: 12px 15px;
+    border-radius: 5px;
+}
