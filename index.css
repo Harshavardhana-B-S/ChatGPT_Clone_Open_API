@@ -116,11 +116,11 @@ body{
     width: 1000px;
 }
 
-.clearHistory{
+.clear_History{
     margin: 0 auto;
 }
 
-.clearHistory button{
+.clear_History button{
     border:none;
     background-color: #282424;
     color: #8e8ea0;;

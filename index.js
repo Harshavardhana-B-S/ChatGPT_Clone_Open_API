@@ -1,10 +1,11 @@
-
+import API_KEY from"./apiKey.js"
 
 const submitBtn=document.getElementById("submit");
 const displayText=document.querySelector(".outputBox")
 const input=document.getElementById("inputTag");
 const historyConatiner=document.querySelector(".historyConatiner");
 const addChat=document.querySelector(".addChat");
+const clearHistory=document.getElementById("clearHistory");
 
 submitBtn.addEventListener("click",displayMessage);
 
@@ -31,8 +32,8 @@ async function displayMessage(){
         displayText.textContent= data.choices[0].message.content;
         if(data.choices[0].message.content){
 
-             // Get existing data from local storage
-             const savedData = JSON.parse(localStorage.getItem('savedData')) || [];
+             // Get existing data from local storage 
+             const savedData = localStorage.getItem("savedData")? JSON.parse(localStorage.getItem("savedData")):[];
 
              // Add new data to array
              savedData.push({
@@ -68,7 +69,7 @@ async function displayMessage(){
 
 // Load saved data on page load
 window.addEventListener('load', () => {
-    const savedData = JSON.parse(localStorage.getItem('savedData')) || [];
+    const savedData = localStorage.getItem("savedData")? JSON.parse(localStorage.getItem("savedData")):[];
     savedData.forEach(data => {
       const para = document.createElement('p');
       para.textContent = data.paraText;
@@ -79,6 +80,7 @@ window.addEventListener('load', () => {
           displayText.textContent = output;
         }
       });
+
       historyConatiner.append(para);
     });
   });
@@ -89,3 +91,14 @@ addChat.addEventListener("click",()=>{
     displayText.textContent='';
 
 })
+
+// Add event listener to clearHistory button
+clearHistory.addEventListener("click", () => {
+    // Clear local storage
+    localStorage.clear();
+    // Remove all history items from UI
+    historyConatiner.innerHTML = "";
+    displayText.textContent='';
+  });
+
+
